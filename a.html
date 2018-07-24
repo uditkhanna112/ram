@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head><script type="text/javascript" src="assets/bluebird.min.js"></script></head>
+<script src="assets/html2canvas.min.js"></script>
+<script type="text/javascript" src="assets/es6-promise.min.js"></script>
+<script type="text/javascript" src="assets/es6-promise.auto.min.js"></script> 
+<script type="text/javascript" src="assets/promise-6.1.0.js"></script>
+<script
+  src="assets/jquery.js"></script>
+
+<body>
+
+<a href="javascript:getScreenshot()" id="abc">Get ScreenShot</a>
+<div id="capture" style="padding: 10px; background: #f5da55">
+    <h4 style="color: #000; ">Hello world!</h4>
+<p>wfdsdfsfdsdfffffffffffffffffffffffffffffffffffsdfsdfsdfsdfsdfsdfsdsdfsf<br>
+fsdfsdfsdfsdfsdfsddddddddddddddddddddddddddffffffffffffffffffffffffsssssssssssssffffffffffffffffdsdfdfsdf</p>
+</div>
+<button onclick="getScreenshot()"></button>
+<script type="text/javascript" >
+
+'use strict';
+	function getScreenshot(){
+html2canvas(document.body).then(function(canvas) {
+            if (navigator.userAgent.indexOf("MSIE ") > 0 || 
+					navigator.userAgent.match(/Trident.*rv\:11\./)) 
+			{
+      	var blob = canvas.msToBlob();
+        window.navigator.msSaveBlob(blob,'capture file.jpeg');
+      }
+      else {
+        $('#abc').attr('href', canvas.toDataURL("image/jpeg"));
+        $('#abc').attr('download','capture file.png');
+        $('#abc')[0].click();
+      } 
+                    });	
+	}
+</script>
+<script type="text/javascript" src="assets/html2canvas.js"></script>
+
+
+</body>
+</html>
